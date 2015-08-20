@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="eve" charset="UTF-8" content="Description Here">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>eve</title>
+	<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
+	<!-- <link rel="icon" type="image/png" href="images/favicon.png">-->
+</head>
+
+<body>
+
+
+
+<script type="text/javascript" src="eve.dev.js"></script>
+<script>
+function something() {
+	console.log("something!");
+}
+function init(){
+	Eve.on("do something", function(){
+		console.log("did something 1");
+	});
+
+	(function(){
+		(function(){
+			Eve.on("do something", function(){
+				console.log("did something 2");
+			});
+		})();
+	})();
+
+	Eve.on("do something", function(){
+		console.log("did something 3");
+	});
+
+	Eve.on("do something", something)
+}
+init();
+
+Eve.ignore("do something");
+
+Eve.emit("do something");
+
+
+
+Eve.observe("do something");
+
+Eve.remove("do something", function(){
+		console.log("did something 3");
+	});
+Eve.removeAll("do something", something);
+
+Eve.emit("do something");
+// console.log(Eve.probeListeners("do something"));
+</script>
+</body>
+
+</html>
