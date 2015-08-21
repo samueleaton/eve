@@ -13,46 +13,71 @@
 
 
 
-<script type="text/javascript" src="eve.dev.js"></script>
+<script type="text/javascript" src="lib/dev/eve.dev.js"></script>
 <script>
 function something() {
 	console.log("something!");
 }
-function init(){
-	Eve.on("do something", function(){
-		console.log("did something 1");
-	});
+// function init(){
+// 	Eve.on("do something", function(){
+// 		console.log("did something 1");
+// 	});
 
-	(function(){
-		(function(){
-			Eve.on("do something", function(){
-				console.log("did something 2");
-			});
-		})();
-	})();
+// 	(function(){
+// 		(function(){
+// 			Eve.on("do something", function(){
+// 				console.log("did something 2");
+// 			});
+// 		})();
+// 	})();
 
-	Eve.on("do something", function(){
-		console.log("did something 3");
-	});
+// 	Eve.on("do something", function(){
+// 		console.log("did something 3");
+// 	});
 
-	Eve.on("do something", something)
-}
-init();
+// 	Eve.on("do something", something)
+// }
+// init();
 
-Eve.ignore("do something");
+// Eve.on("say hi", function(){
+// 	console.log("HI!!!!!!");
+// })
 
-Eve.emit("do something");
+// Eve.on(["do something","say hi"], function(){
+// 	console.log("do Something and Say hi");
+// })
+// // Eve.ignore("do something");
 
+// Eve.emit(["do something", "say hi"]);
+// Eve.emit("do something");
 
+Eve.on("Say Goodbye", function(){
+	console.log("Goodbye!");
+})
 
-Eve.observe("do something");
+Eve.on("Say Hello", function(){
+	console.log("Hello!");
+})
 
-Eve.remove("do something", function(){
-		console.log("did something 3");
-	});
-Eve.removeAll("do something", something);
+Eve.on("Say My Name", function(){
+	console.log("Saying Sam");
+})
 
-Eve.emit("do something");
+Eve.defer("Say Goodbye", "Say Hello");
+Eve.defer("Say My Name", "Say Hello");
+
+// Eve.emit("Say Goodbye");
+Eve.emit("Say Hello");
+Eve.emit("Say Goodbye");
+
+// Eve.observe("do something");
+
+// Eve.remove("do something", function(){
+// 		console.log("did something 3");
+// 	});
+// Eve.removeAll("do something", something);
+
+// Eve.emit("do something");
 // console.log(Eve.probeListeners("do something"));
 </script>
 </body>
