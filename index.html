@@ -63,11 +63,16 @@ Eve.on("Say My Name", function(){
 	console.log("Saying Sam");
 })
 
-Eve.defer("Say Goodbye", "Say Hello");
-Eve.defer("Say My Name", "Say Hello");
+Eve.defer("Say Goodbye").until("Say My Name");
+Eve.ignore("Say Goodbye").until("Say Hello");
+// Eve.ignore("Say My Name").until("Say Hello");
 
 // Eve.emit("Say Goodbye");
-Eve.emit("Say Hello");
+// Eve.emit("Say Goodbye");
+// Eve.emit("Say Hello");
+// Eve.emit("Say Goodbye");
+// Eve.emit("Say My Name");
+Eve.observe("Say Goodbye");
 Eve.emit("Say Goodbye");
 
 // Eve.observe("do something");
