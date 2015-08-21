@@ -22,5 +22,11 @@ Simple Pub/Sub
 ####Remove Ignore for Emitter
 `Eve.observe("name of listener")`
 
+####Defer an Emitter
+This will prevent an emitter from firing (similar to ignore), until a specified emitter fires first. 
+`Eve.defer("name of emitter 1", "name of another emitter")`
+
+In the above example, `"name of emitter 1"` will only fire if and when `"name of another emitter"` is fired. 
+
 ####Get info about current Listeners (Dev only)
 `Eve.probeListeners("name of Listener")`
