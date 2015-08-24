@@ -13,7 +13,7 @@
 
 
 
-<script type="text/javascript" src="lib/dev/eve.dev.js"></script>
+<script type="text/javascript" src="lib/eve.js"></script>
 <script>
 function something() {
 	console.log("something!");
@@ -51,29 +51,43 @@ function something() {
 // Eve.emit(["do something", "say hi"]);
 // Eve.emit("do something");
 
+Eve.ignore("Say Anything");
+Eve.on("Say Anything", function(){
+	console.log("\"Anything!\"");
+})
+Eve.emit("Say Anything");
+Eve.observe("Say Anything");
+Eve.emit("Say Anything");
+
+
 Eve.on("Say Goodbye", function(){
 	console.log("Goodbye!");
+})
+
+Eve.on("Say Goodbye", function(){
+	console.log("Goodbye 2!");
 })
 
 Eve.on("Say Hello", function(){
 	console.log("Hello!");
 })
 
-Eve.on("Say My Name", function(){
+var myName = Eve.on("Say My Name", function(){
 	console.log("Saying Sam");
-})
+});
 
 Eve.defer("Say Goodbye").until("Say My Name");
-Eve.ignore("Say Goodbye").until("Say Hello");
+// Eve.ignore("Say Goodbye").until("Say Hello");
 // Eve.ignore("Say My Name").until("Say Hello");
 
 // Eve.emit("Say Goodbye");
 // Eve.emit("Say Goodbye");
 // Eve.emit("Say Hello");
 // Eve.emit("Say Goodbye");
-// Eve.emit("Say My Name");
-Eve.observe("Say Goodbye");
-Eve.emit("Say Goodbye");
+Eve.emit("Say My Name");
+// Eve.emit("Say Goodbye");
+// Eve.observe("Say Goodbye");
+// Eve.emit("Say Goodbye");
 
 // Eve.observe("do something");
 
